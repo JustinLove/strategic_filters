@@ -18,6 +18,9 @@
     ],
     "start": [
       "coui://ui/mods/atlas_message/start.js"
+    ],
+    "live_game": [
+      "coui://ui/mods/atlas_message/live_game.js"
     ]
   },
   "signature": "not yet implemented",
