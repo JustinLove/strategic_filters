@@ -4,6 +4,9 @@
   "category": ["in-game", "strategic-icons"],
   "context": "client",
   "date": "2015/02/01",
+  "dependencies": [
+    "com.pa.raevn.rblueprintinfoframework"
+  ],
   "description": "Filter strategic icons for different layers.",
   "display_name": "Strategic Filters",
   "forum": null,
