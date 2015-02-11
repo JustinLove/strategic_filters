@@ -14,8 +14,4 @@
     $(this).attr('data-bind', $(this).attr('data-bind').replace('}', ', class: $data }'))
   })
   atlasMessage.poll('icon_atlas', 1000)
-  window.ping = function() {
-    atlasMessage.message('start', 'ping', {hello: 'from icon_atlas'})
-  }
-  ping()
 })()

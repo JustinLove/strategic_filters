@@ -14,14 +14,11 @@
   "priority": 100,
   "scenes": {
     "global_mod_list": [
+      "coui://ui/mods/strategic_filters/keybinds.js"
     ],
     "icon_atlas": [
       "coui://ui/mods/strategic_filters/atlas_message.js",
       "coui://ui/mods/strategic_filters/icon_atlas.js"
-    ],
-    "start": [
-      "coui://ui/mods/strategic_filters/atlas_message.js",
-      "coui://ui/mods/strategic_filters/start.js"
     ],
     "live_game": [
       "coui://ui/mods/strategic_filters/atlas_message.js",
