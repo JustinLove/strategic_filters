@@ -14,15 +14,8 @@
 
   console.log('strategic filter')
   bif.registerBIFReadyCallback(function() {
-    surfaceLayer = bif.getFilteredUnitIDs('Land | Naval')
-    airLayer = bif.getFilteredUnitIDs('Air').filter(function(id) {
-      if (id.match('factory')) {
-        surfaceLayer.push(id)
-        return false
-      } else {
-        return true
-      }
-    })
+    surfaceLayer = bif.getFilteredUnitIDs('Land | Naval | Structure')
+    airLayer = bif.getFilteredUnitIDs('Air & Mobile')
     orbitalLayer = bif.getFilteredUnitIDs('Orbital')
   })
 
