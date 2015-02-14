@@ -1,7 +1,9 @@
 (function() {
+  /*
   handlers.ping = function(payload) {
     console.log('ping', payload)
   }
+  */
   handlers.toggle_icons = function(payload) {
     payload.off && payload.off.forEach(function(icon) {
       $('.'+icon).css('visibility', 'hidden')
@@ -13,5 +15,5 @@
   $('img').each(function() {
     $(this).attr('data-bind', $(this).attr('data-bind').replace('}', ', class: $data }'))
   })
-  atlasMessage.poll('icon_atlas', 1000)
+  atlasMessage.poll('icon_atlas', 100)
 })()
