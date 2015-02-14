@@ -12,13 +12,6 @@
   var airLayer = []
   var orbitalLayer = []
 
-  console.log('strategic filter')
-  bif.registerBIFReadyCallback(function() {
-    surfaceLayer = bif.getFilteredUnitIDs('Land | Naval | Structure')
-    airLayer = bif.getFilteredUnitIDs('Air & Mobile')
-    orbitalLayer = bif.getFilteredUnitIDs('Orbital')
-  })
-
   var iconToggle = function(value, icons) {
     if (value) {
       atlasMessage.message('icon_atlas', 'toggle_icons', {on: icons})
@@ -50,6 +43,15 @@
   model.orbitalIconsVisible.subscribe(function(value) {
     iconToggle(value, orbitalLayer)
   })
- 
+
+  bif.registerBIFReadyCallback(function() {
+    surfaceLayer = bif.getFilteredUnitIDs('Land | Naval | Structure')
+    airLayer = bif.getFilteredUnitIDs('Air & Mobile')
+    orbitalLayer = bif.getFilteredUnitIDs('Orbital')
+    model.surfaceIconsVisible(true)
+    model.airIconsVisible(true)
+    model.orbitalIconsVisible(true)
+  })
+
   api.Panel.message('', 'inputmap.reload');
 })()
