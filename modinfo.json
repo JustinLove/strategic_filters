@@ -9,7 +9,7 @@
   ],
   "description": "Selectively disable classes of strategic icons.",
   "display_name": "Strategic Filters",
-  "forum": null,
+  "forum": "https://forums.uberent.com/threads/rel-strategic-filters.67954/",
   "identifier": "com.wondible.pa.strategic_filters",
   "priority": 100,
   "scenes": {
@@ -26,6 +26,6 @@
     ]
   },
   "signature": "not yet implemented",
-  "version": "0.1.0"
+  "version": "1.0.0"
 }
 
