@@ -3,7 +3,7 @@
   "build": "78071",
   "category": ["in-game", "strategic-icons"],
   "context": "client",
-  "date": "2015/02/14",
+  "date": "2015/02/22",
   "dependencies": [
     "com.pa.raevn.rblueprintinfoframework"
   ],
@@ -26,6 +26,6 @@
     ]
   },
   "signature": "not yet implemented",
-  "version": "1.0.0"
+  "version": "2.0.0"
 }
 

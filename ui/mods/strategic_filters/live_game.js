@@ -14,11 +14,14 @@
   var surfaceLayer = []
   var airLayer = []
   var orbitalLayer = []
+  var effectiveVisible = []
 
   var iconToggle = function(value, icons) {
     if (value) {
+      effectiveVisible = _.union(effectiveVisible, icons)
       atlasMessage.message('icon_atlas', 'toggle_icons', {on: icons})
     } else {
+      effectiveVisible = _.difference(effectiveVisible, icons)
       atlasMessage.message('icon_atlas', 'toggle_icons', {off: icons})
     }
   }
@@ -47,10 +50,22 @@
     iconToggle(value, orbitalLayer)
   })
 
+  model.selection.subscribe(function(sel) {
+    if (!sel) return
+    if (model.surfaceIconsVisible() && model.airIconsVisible() && model.orbitalIconsVisible()) return
+    var hidden = Object.keys(sel.spec_ids).filter(function(spec) {
+      return effectiveVisible.indexOf(spec.match(/\/(\w+).json/)[1]) == -1
+    })
+    if (hidden.length > 0) {
+      model.holodeck.view.selectByTypes('remove', hidden)
+    }
+  })
+
   bif.registerBIFReadyCallback(function() {
     surfaceLayer = bif.getFilteredUnitIDs('Land | Naval | Structure')
     airLayer = bif.getFilteredUnitIDs('Air & Mobile')
     orbitalLayer = bif.getFilteredUnitIDs('Orbital')
+    effectiveVisible = _.union(surfaceLayer, airLayer, orbitalLayer)
     model.surfaceIconsVisible(true)
     model.airIconsVisible(true)
     model.orbitalIconsVisible(true)
