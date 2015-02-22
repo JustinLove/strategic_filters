@@ -61,10 +61,37 @@
     }
   })
 
+  var fixupLayers = function(ids, defaultLayer) {
+    ids.forEach(function(id) {
+      var spec = bif.getUnitBlueprint(id)
+      switch(spec.spawn_layers) {
+        case 'WL_Air':
+          airLayer.push(id)
+          break
+        case 'WL_Orbital':
+          orbitalLayer.push(id)
+          break
+        case undefined:
+          defaultLayer.push(id)
+          break;
+        default:
+          surfaceLayer.push(id)
+          break;
+      }
+    })
+  }
+
   bif.registerBIFReadyCallback(function() {
-    surfaceLayer = bif.getFilteredUnitIDs('Land | Naval | Structure')
+    fixupLayers(bif.getFilteredUnitIDs('Land | Naval | Structure'), surfaceLayer)
+    // apparently air all spawns on ground
     airLayer = bif.getFilteredUnitIDs('Air & Mobile')
-    orbitalLayer = bif.getFilteredUnitIDs('Orbital')
+    fixupLayers(bif.getFilteredUnitIDs('Orbital'), orbitalLayer)
+
+    var ignore = bif.getFilteredUnitIDs('Commander | NoBuild')
+    surfaceLayer = _.uniq(_.difference(surfaceLayer, ignore))
+    airLayer = _.difference(airLayer, ignore)
+    orbitalLayer = _.uniq(_.difference(orbitalLayer, ignore))
+
     effectiveVisible = _.union(surfaceLayer, airLayer, orbitalLayer)
     model.surfaceIconsVisible(true)
     model.airIconsVisible(true)
