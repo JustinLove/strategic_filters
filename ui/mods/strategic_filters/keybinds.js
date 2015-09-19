@@ -2,6 +2,7 @@
   ['toggle_surface_icons', 'ctrl+shift+i'],
   ['toggle_air_icons', 'ctrl+shift+o'],
   ['toggle_orbital_icons', 'ctrl+shift+p'],
+  ['focus_air_defense', 'ctrl+shift+f'],
 ].forEach(function(array) {
   var name = array[0]
   action_sets.general[name] = function () {

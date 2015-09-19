@@ -4,9 +4,10 @@ Selectively disable classes of strategic icons.
 
 ## Default Keybindings
 
-- Toggle surface: ctrl+shift+i
-- Toggle air: ctrl+shift+o
-- Toggle orbital: ctrl+shift+p
+- Toggle surface: `ctrl+shift+i`
+- Toggle air: `ctrl+shift+o`
+- Toggle orbital: `ctrl+shift+p`
+- Focus air defense: `ctrl+shift+f`
 
 Alternate suggestions welcome, but keep in mind there may be many more in the future
 

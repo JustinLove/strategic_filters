@@ -9,7 +9,9 @@
   var surfaceLayer = []
   var airLayer = []
   var orbitalLayer = []
+  var airDefenseFocus = []
   var effectiveVisible = []
+  var allIcons = []
 
   var iconToggle = function(value, icons) {
     if (value) {
@@ -19,6 +21,12 @@
       effectiveVisible = _.difference(effectiveVisible, icons)
       atlasMessage.message('icon_atlas', 'toggle_icons', {off: icons})
     }
+  }
+
+  var iconFocus = function(icons) {
+    effectiveVisible = [].concat(icons)
+    var rest = _.difference(allIcons, icons)
+    atlasMessage.message('icon_atlas', 'toggle_icons', {off: rest, on: icons})
   }
 
   model.surfaceIconsVisible = ko.observable(true).extend({session: 'surface_icons_visible'})
@@ -45,9 +53,26 @@
     iconToggle(value, orbitalLayer)
   })
 
+  model.iconFocusMode = ko.observable().extend({session: 'icon_focus_mode'})
+  model.iconFocusMode.subscribe(function(value) {
+    if (value) {
+      iconFocus(airDefenseFocus)
+    } else {
+      iconFocus(allIcons)
+    }
+  })
+
+  model.focus_air_defense = function() {
+    if (model.iconFocusMode() == 'air_defense') {
+      model.iconFocusMode(null)
+    } else {
+      model.iconFocusMode('air_defense')
+    }
+  }
+
   model.selection.subscribe(function(sel) {
     if (!sel) return
-    if (model.surfaceIconsVisible() && model.airIconsVisible() && model.orbitalIconsVisible()) return
+    if (model.surfaceIconsVisible() && model.airIconsVisible() && model.orbitalIconsVisible() && model.iconFocusMode() === null) return
     var hidden = Object.keys(sel.spec_ids).filter(function(spec) {
       return effectiveVisible.indexOf(spec.match(/\/(\w+).json/)[1]) == -1
     })
@@ -82,15 +107,22 @@
     airLayer = bif.getFilteredUnitIDs('Air & Mobile')
     fixupLayers(bif.getFilteredUnitIDs('Orbital'), orbitalLayer)
 
+    airDefenseFocus = bif.getFilteredUnitIDs('AirDefense | Fighter')
+
     var ignore = bif.getFilteredUnitIDs('Commander | NoBuild')
     surfaceLayer = _.uniq(_.difference(surfaceLayer, ignore))
     airLayer = _.difference(airLayer, ignore)
     orbitalLayer = _.uniq(_.difference(orbitalLayer, ignore))
 
-    effectiveVisible = _.union(surfaceLayer, airLayer, orbitalLayer)
+    ignore = bif.getFilteredUnitIDs('Commander | NoBuild | Orbital')
+    airDefenseFocus = _.uniq(_.difference(airDefenseFocus, ignore))
+
+    allIcons = _.union(surfaceLayer, airLayer, orbitalLayer)
+    effectiveVisible = [].concat(allIcons)
     model.surfaceIconsVisible(true)
     model.airIconsVisible(true)
     model.orbitalIconsVisible(true)
+    model.iconFocusMode(null)
   })
 
   api.Panel.message('', 'inputmap.reload');
