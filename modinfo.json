@@ -1,9 +1,9 @@
 {
   "author": "wondible",
-  "build": "78071",
+  "build": "87296",
   "category": ["in-game", "strategic-icons"],
   "context": "client",
-  "date": "2015/02/22",
+  "date": "2015/09/19",
   "dependencies": [
     "com.pa.raevn.rblueprintinfoframework"
   ],
@@ -17,7 +17,6 @@
       "coui://ui/mods/strategic_filters/keybinds.js"
     ],
     "icon_atlas": [
-      "coui://ui/mods/strategic_filters/atlas_message.js",
       "coui://ui/mods/strategic_filters/icon_atlas.js"
     ],
     "live_game": [
@@ -26,6 +25,6 @@
     ]
   },
   "signature": "not yet implemented",
-  "version": "2.0.0"
+  "version": "3.0.0"
 }
 

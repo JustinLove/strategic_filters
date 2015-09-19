@@ -17,6 +17,4 @@ Alternate suggestions welcome, but keep in mind there may be many more in the fu
 ## Future work
 
 - Focus modes - enable certain icons and disable all others (suggestions?)
-- Automatically remove disabled icons from selections.
 - Extract a framework for communicating with the icon atlases.
-- See if storage events would be more efficient than polling messages.

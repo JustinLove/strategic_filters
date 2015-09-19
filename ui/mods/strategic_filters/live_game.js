@@ -1,15 +1,10 @@
 (function() {
   /*
-  handlers.ping = function(payload) {
-    console.log('ping', payload)
-  }
   window.ping = function() {
     atlasMessage.message('icon_atlas', 'ping', {hello: 'from live_game'})
   }
   ping()
   */
-
-  atlasMessage.poll('live_game', 1000)
 
   var surfaceLayer = []
   var airLayer = []
