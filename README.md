@@ -11,6 +11,10 @@ Selectively disable classes of strategic icons.
 
 Alternate suggestions welcome, but keep in mind there may be many more in the future
 
+## Conflicts
+
+Will not be able toggle any icons when a mod (probably server) has changed icon IDs during a game.
+
 ## Dependencies
 
 [Blueprint Info Framework](https://forums.uberent.com/threads/rel-blueprint-info-framework-v1-4-4.56213/)

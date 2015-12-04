@@ -1,3 +1,7 @@
+## 3.0.1
+
+- Update atlasMessage to prevent breaking Icon Reloader.
+
 ## 3.0.0
 
 - Air Defense focus mode. (Currently anti-air only, so bombers etc. can't be selected)
