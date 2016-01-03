@@ -53,7 +53,7 @@
     iconToggle(value, orbitalLayer)
   })
 
-  model.iconFocusMode = ko.observable().extend({session: 'icon_focus_mode'})
+  model.iconFocusMode = ko.observable(null).extend({session: 'icon_focus_mode'})
   model.iconFocusMode.subscribe(function(value) {
     if (value) {
       iconFocus(airDefenseFocus)
@@ -72,6 +72,7 @@
 
   model.selection.subscribe(function(sel) {
     if (!sel) return
+    if (effectiveVisible.length == 0) return
     if (model.surfaceIconsVisible() && model.airIconsVisible() && model.orbitalIconsVisible() && model.iconFocusMode() === null) return
     var hidden = Object.keys(sel.spec_ids).filter(function(spec) {
       return effectiveVisible.indexOf(spec.match(/\/(\w+).json/)[1]) == -1
@@ -101,7 +102,7 @@
     })
   }
 
-  bif.registerBIFReadyCallback(function() {
+  bif.registerBIFReadyCallback(function strategic_filters_ready() {
     fixupLayers(bif.getFilteredUnitIDs('Land | Naval | Structure'), surfaceLayer)
     // apparently air all spawns on ground
     airLayer = bif.getFilteredUnitIDs('Air & Mobile')

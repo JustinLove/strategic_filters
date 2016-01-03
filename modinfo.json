@@ -1,15 +1,16 @@
 {
   "author": "wondible",
   "build": "89755",
-  "category": ["in-game", "strategic-icons"],
+  "category": ["in-game", "strategic-icons", "titans"],
   "context": "client",
-  "date": "2015/12/04",
+  "date": "2016/01/03",
   "dependencies": [
     "com.pa.raevn.rblueprintinfoframework"
   ],
   "description": "Selectively disable classes of strategic icons.",
   "display_name": "Strategic Filters",
   "forum": "https://forums.uberent.com/threads/rel-strategic-filters.67954/",
+  "icon": "http://wondible.com/pa/icons/strategic_filters.png",
   "identifier": "com.wondible.pa.strategic_filters",
   "priority": 100,
   "scenes": {
@@ -25,6 +26,6 @@
     ]
   },
   "signature": "not yet implemented",
-  "version": "3.0.1"
+  "version": "3.0.2"
 }
 

@@ -1,3 +1,9 @@
+## 3.0.2
+
+- Gracefully do nothing if BIF fails to load
+- Add titans mod tag
+- Mod icon
+
 ## 3.0.1
 
 - Update atlasMessage to prevent breaking Icon Reloader.
